@@ -13,8 +13,8 @@
 node_modules/
 .expo/
 dist/
-android/
-ios/
+/android/
+/ios/
 *.apk
 *.aab
 *.jks
