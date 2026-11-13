@@ -1,0 +1,11 @@
+# Open-Power & AI Agents
+.opow/
+.agent/
+.cline/
+.clinerules/
+.claude/
+.codex/
+.superpowers/
+.worktrees/
+.design/
+.worktrees/
