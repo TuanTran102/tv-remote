@@ -8,4 +8,18 @@
 .superpowers/
 .worktrees/
 .design/
-.worktrees/
+
+# Expo / React Native / EAS
+node_modules/
+.expo/
+dist/
+android/
+ios/
+*.apk
+*.aab
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+.DS_Store

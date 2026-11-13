@@ -1,0 +1,23 @@
+{
+  "expo": {
+    "name": "IR TV Remote",
+    "slug": "tv-remote",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "tvremote",
+    "userInterfaceStyle": "dark",
+    "android": {
+      "package": "com.tvremote.ir",
+      "adaptiveIcon": {
+        "backgroundColor": "#0B0F17"
+      }
+    },
+    "plugins": [
+      "expo-router",
+      "./plugins/withIrPermission"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
