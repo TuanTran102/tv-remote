@@ -1,4 +1,4 @@
-const { withAndroidManifest } = require('@expo/config-plugins');
+const { withAndroidManifest } = require('expo/config-plugins');
 
 const IR_PERMISSION = 'android.permission.TRANSMIT_IR';
 const IR_FEATURE = 'android.hardware.consumerir';
