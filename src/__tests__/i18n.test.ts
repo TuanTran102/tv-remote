@@ -57,4 +57,17 @@ describe('bilingual translations (vi + en)', () => {
     await saveLocale('vi');
     expect(await loadSavedLocale()).toBe('vi');
   });
+
+  it('provides localized mode switcher and digit 0-9 accessibility labels in vi and en', () => {
+    expect(translate('vi', 'modeDpad')).toBe('Điều hướng');
+    expect(translate('vi', 'modeNumpad')).toBe('Phím số 123');
+    expect(translate('en', 'modeDpad')).toBe('D-Pad');
+    expect(translate('en', 'modeNumpad')).toBe('123 Keypad');
+
+    for (let digit = 0; digit <= 9; digit += 1) {
+      const key = `keyDigit${digit}` as keyof typeof TRANSLATIONS.vi;
+      expect(translate('vi', key)).toBe(`Số ${digit}`);
+      expect(translate('en', key)).toBe(`Number ${digit}`);
+    }
+  });
 });
