@@ -40,6 +40,13 @@ describe('bilingual translations (vi + en)', () => {
     expect(translate('en', 'wizardStep2', { index: 1, total: 2 })).toBe('2. Test codeset 1 / 2');
   });
 
+  it('provides clean CTA labels without redundant icons/symbols', () => {
+    expect(TRANSLATIONS.vi.addFirstTvCta).toBe('Thêm TV đầu tiên');
+    expect(TRANSLATIONS.en.addFirstTvCta).toBe('Add First TV');
+    expect(TRANSLATIONS.vi.addFirstTvCta.startsWith('+')).toBe(false);
+    expect(TRANSLATIONS.en.addFirstTvCta.startsWith('+')).toBe(false);
+  });
+
   it('defaults to vi and persists switching to en in AsyncStorage', async () => {
     expect(await loadSavedLocale()).toBe('vi');
 

@@ -14,10 +14,17 @@
     },
     "plugins": [
       "expo-router",
-      "./plugins/withIrPermission"
+      "./plugins/withIrPermission",
+      "expo-asset"
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "c03a6f9f-a79c-4147-b284-c0b734516edf"
+      }
     }
   }
 }

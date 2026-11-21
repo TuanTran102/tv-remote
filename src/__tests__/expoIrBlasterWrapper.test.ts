@@ -1,11 +1,13 @@
 describe('ExpoIrBlaster TypeScript wrapper', () => {
   afterEach(() => {
+    jest.dontMock('expo-modules-core');
     jest.resetModules();
     jest.clearAllMocks();
   });
 
   it('falls back safely when native module is absent (Expo Go / Jest)', async () => {
     jest.doMock('expo-modules-core', () => ({
+      ...jest.requireActual('expo-modules-core'),
       requireOptionalNativeModule: jest.fn(() => null),
     }));
 
@@ -27,6 +29,7 @@ describe('ExpoIrBlaster TypeScript wrapper', () => {
     };
 
     jest.doMock('expo-modules-core', () => ({
+      ...jest.requireActual('expo-modules-core'),
       requireOptionalNativeModule: jest.fn(() => mockNative),
     }));
 

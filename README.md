@@ -52,4 +52,5 @@ npx expo start    # Preview UI in Expo Go (Simulation Mode)
 npx eas-cli login
 npm run build:apk
 # or: npx eas-cli build -p android --profile preview
+eas build --platform android --profile preview
 ```

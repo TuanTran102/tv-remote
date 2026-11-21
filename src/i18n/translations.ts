@@ -14,7 +14,7 @@ export const TRANSLATIONS = {
     emptyDevicesTitle: 'Chưa có TV nào được lưu',
     emptyDevicesDesc:
       'Dùng Quick Match Wizard để dò mã hồng ngoại cho TV Samsung, LG, Sony, TCL, Casper hoặc Panasonic.',
-    addFirstTvCta: '+ Thêm TV đầu tiên',
+    addFirstTvCta: 'Thêm TV đầu tiên',
     addNewTvBtn: 'Thêm TV mới',
     devicesEmptyList: 'Chưa có TV nào được lưu.',
     saveBtn: 'Lưu',
@@ -56,7 +56,7 @@ export const TRANSLATIONS = {
     emptyDevicesTitle: 'No saved TVs yet',
     emptyDevicesDesc:
       'Use the Quick Match Wizard to find IR codes for Samsung, LG, Sony, TCL, Casper, or Panasonic TVs.',
-    addFirstTvCta: '+ Add First TV',
+    addFirstTvCta: 'Add First TV',
     addNewTvBtn: 'Add New TV',
     devicesEmptyList: 'No saved TVs yet.',
     saveBtn: 'Save',
