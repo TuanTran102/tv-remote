@@ -11,6 +11,58 @@ function makeNecCommands(
   return Object.fromEntries(entries) as Record<RemoteKey, IrCommandDef>;
 }
 
+const SAMSUNG_DIGITS = {
+  DIGIT_0: 0xe0e08877,
+  DIGIT_1: 0xe0e020df,
+  DIGIT_2: 0xe0e0a05f,
+  DIGIT_3: 0xe0e0609f,
+  DIGIT_4: 0xe0e010ef,
+  DIGIT_5: 0xe0e0906f,
+  DIGIT_6: 0xe0e050af,
+  DIGIT_7: 0xe0e030cf,
+  DIGIT_8: 0xe0e0b04f,
+  DIGIT_9: 0xe0e0708f,
+} as const;
+
+const LG_DIGITS = {
+  DIGIT_0: 0x20df08f7,
+  DIGIT_1: 0x20df8877,
+  DIGIT_2: 0x20df48b7,
+  DIGIT_3: 0x20dfc837,
+  DIGIT_4: 0x20df28d7,
+  DIGIT_5: 0x20dfa857,
+  DIGIT_6: 0x20df6897,
+  DIGIT_7: 0x20dfe817,
+  DIGIT_8: 0x20df18e7,
+  DIGIT_9: 0x20df9867,
+} as const;
+
+const SONY_DIGITS = {
+  DIGIT_0: 0x910,
+  DIGIT_1: 0x010,
+  DIGIT_2: 0x810,
+  DIGIT_3: 0x410,
+  DIGIT_4: 0xc10,
+  DIGIT_5: 0x210,
+  DIGIT_6: 0xa10,
+  DIGIT_7: 0x610,
+  DIGIT_8: 0xe10,
+  DIGIT_9: 0x110,
+} as const;
+
+const PANASONIC_DIGITS = {
+  DIGIT_0: 0x40040198,
+  DIGIT_1: 0x40040108,
+  DIGIT_2: 0x40040188,
+  DIGIT_3: 0x40040148,
+  DIGIT_4: 0x400401c8,
+  DIGIT_5: 0x40040128,
+  DIGIT_6: 0x400401a8,
+  DIGIT_7: 0x40040168,
+  DIGIT_8: 0x400401e8,
+  DIGIT_9: 0x40040118,
+} as const;
+
 export const BUNDLED_CODESETS: BrandCodeset[] = [
   {
     id: 'samsung-1',
@@ -34,6 +86,7 @@ export const BUNDLED_CODESETS: BrandCodeset[] = [
         VOL_DOWN: 0xe0e0d02f,
         CH_UP: 0xe0e048b7,
         CH_DOWN: 0xe0e008f7,
+        ...SAMSUNG_DIGITS,
       },
       'SAMSUNG32'
     ),
@@ -60,6 +113,7 @@ export const BUNDLED_CODESETS: BrandCodeset[] = [
         VOL_DOWN: 0xe0e0d02f,
         CH_UP: 0xe0e048b7,
         CH_DOWN: 0xe0e008f7,
+        ...SAMSUNG_DIGITS,
       },
       'SAMSUNG32'
     ),
@@ -85,6 +139,7 @@ export const BUNDLED_CODESETS: BrandCodeset[] = [
       VOL_DOWN: 0x20dfc03f,
       CH_UP: 0x20df00ff,
       CH_DOWN: 0x20df807f,
+      ...LG_DIGITS,
     }),
   },
   {
@@ -108,6 +163,7 @@ export const BUNDLED_CODESETS: BrandCodeset[] = [
       VOL_DOWN: 0x20dfc03f,
       CH_UP: 0x20df00ff,
       CH_DOWN: 0x20df807f,
+      ...LG_DIGITS,
     }),
   },
   {
@@ -132,6 +188,7 @@ export const BUNDLED_CODESETS: BrandCodeset[] = [
         VOL_DOWN: 0xc90,
         CH_UP: 0x090,
         CH_DOWN: 0x890,
+        ...SONY_DIGITS,
       },
       'SONY_SIRC12'
     ),
@@ -158,6 +215,7 @@ export const BUNDLED_CODESETS: BrandCodeset[] = [
         VOL_DOWN: 0xc90,
         CH_UP: 0x090,
         CH_DOWN: 0x890,
+        ...SONY_DIGITS,
       },
       'SONY_SIRC12'
     ),
@@ -183,6 +241,16 @@ export const BUNDLED_CODESETS: BrandCodeset[] = [
       VOL_DOWN: 0x04fb728d,
       CH_UP: 0x04fb52ad,
       CH_DOWN: 0x04fbd02f,
+      DIGIT_0: 0x04fb08f7,
+      DIGIT_1: 0x04fb8877,
+      DIGIT_2: 0x04fb48b7,
+      DIGIT_3: 0x04fbc837,
+      DIGIT_4: 0x04fb28d7,
+      DIGIT_5: 0x04fba857,
+      DIGIT_6: 0x04fb6897,
+      DIGIT_7: 0x04fbe817,
+      DIGIT_8: 0x04fb18e7,
+      DIGIT_9: 0x04fb9867,
     }),
   },
   {
@@ -206,6 +274,16 @@ export const BUNDLED_CODESETS: BrandCodeset[] = [
       VOL_DOWN: 0x5743609f,
       CH_UP: 0x574348b7,
       CH_DOWN: 0x5743c837,
+      DIGIT_0: 0x574308f7,
+      DIGIT_1: 0x574310ef,
+      DIGIT_2: 0x5743906f,
+      DIGIT_3: 0x574350af,
+      DIGIT_4: 0x5743d02f,
+      DIGIT_5: 0x574330cf,
+      DIGIT_6: 0x5743b04f,
+      DIGIT_7: 0x5743708f,
+      DIGIT_8: 0x5743f00f,
+      DIGIT_9: 0x57438877,
     }),
   },
   {
@@ -229,6 +307,16 @@ export const BUNDLED_CODESETS: BrandCodeset[] = [
       VOL_DOWN: 0x00ff30cf,
       CH_UP: 0x00ffb04f,
       CH_DOWN: 0x00ff708f,
+      DIGIT_0: 0x00ff08f7,
+      DIGIT_1: 0x00ff8877,
+      DIGIT_2: 0x00ff48b7,
+      DIGIT_3: 0x00ffc837,
+      DIGIT_4: 0x00ff28d7,
+      DIGIT_5: 0x00ffa857,
+      DIGIT_6: 0x00ff6897,
+      DIGIT_7: 0x00ffe817,
+      DIGIT_8: 0x00ff18e7,
+      DIGIT_9: 0x00ff9867,
     }),
   },
   {
@@ -252,6 +340,16 @@ export const BUNDLED_CODESETS: BrandCodeset[] = [
       VOL_DOWN: 0x40bf30cf,
       CH_UP: 0x40bfb04f,
       CH_DOWN: 0x40bf708f,
+      DIGIT_0: 0x40bf08f7,
+      DIGIT_1: 0x40bf8877,
+      DIGIT_2: 0x40bf48b7,
+      DIGIT_3: 0x40bfc837,
+      DIGIT_4: 0x40bf28d7,
+      DIGIT_5: 0x40bfa857,
+      DIGIT_6: 0x40bf6897,
+      DIGIT_7: 0x40bfe817,
+      DIGIT_8: 0x40bf18e7,
+      DIGIT_9: 0x40bf9867,
     }),
   },
   {
@@ -275,6 +373,7 @@ export const BUNDLED_CODESETS: BrandCodeset[] = [
       VOL_DOWN: 0x40040184,
       CH_UP: 0x4004012c,
       CH_DOWN: 0x400401ac,
+      ...PANASONIC_DIGITS,
     }),
   },
   {
@@ -298,6 +397,7 @@ export const BUNDLED_CODESETS: BrandCodeset[] = [
       VOL_DOWN: 0x40040184,
       CH_UP: 0x4004012c,
       CH_DOWN: 0x400401ac,
+      ...PANASONIC_DIGITS,
     }),
   },
 ];

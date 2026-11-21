@@ -2,6 +2,33 @@ export type AppLocale = 'vi' | 'en';
 
 export type IrProtocol = 'NEC' | 'SAMSUNG32' | 'SONY_SIRC12' | 'RAW';
 
+export type RemotePadMode = 'dpad' | 'numpad';
+
+export type DigitRemoteKey =
+  | 'DIGIT_0'
+  | 'DIGIT_1'
+  | 'DIGIT_2'
+  | 'DIGIT_3'
+  | 'DIGIT_4'
+  | 'DIGIT_5'
+  | 'DIGIT_6'
+  | 'DIGIT_7'
+  | 'DIGIT_8'
+  | 'DIGIT_9';
+
+export const DIGIT_REMOTE_KEYS: readonly DigitRemoteKey[] = [
+  'DIGIT_0',
+  'DIGIT_1',
+  'DIGIT_2',
+  'DIGIT_3',
+  'DIGIT_4',
+  'DIGIT_5',
+  'DIGIT_6',
+  'DIGIT_7',
+  'DIGIT_8',
+  'DIGIT_9',
+] as const;
+
 export type RemoteKey =
   | 'POWER'
   | 'SOURCE'
@@ -17,7 +44,8 @@ export type RemoteKey =
   | 'VOL_UP'
   | 'VOL_DOWN'
   | 'CH_UP'
-  | 'CH_DOWN';
+  | 'CH_DOWN'
+  | DigitRemoteKey;
 
 export const ALL_REMOTE_KEYS: readonly RemoteKey[] = [
   'POWER',
@@ -35,6 +63,7 @@ export const ALL_REMOTE_KEYS: readonly RemoteKey[] = [
   'VOL_DOWN',
   'CH_UP',
   'CH_DOWN',
+  ...DIGIT_REMOTE_KEYS,
 ] as const;
 
 export type TvBrand = 'Samsung' | 'LG' | 'Sony' | 'TCL' | 'Casper' | 'Panasonic';
