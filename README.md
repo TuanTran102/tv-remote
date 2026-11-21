@@ -1,18 +1,19 @@
 # IR TV Remote (Android)
 
-Offline-first, bilingual (**Vietnamese / English**) Android IR TV Remote built with **Expo SDK 52**, a local **Kotlin `ConsumerIrManager` Expo Module**, TypeScript IR protocol encoders, and **Expo EAS Cloud APK Build** support.
+Offline-first, bilingual (**Vietnamese / English**) Android IR TV Remote built with **Expo SDK 57**, a local **Kotlin `ConsumerIrManager` Expo Module**, TypeScript IR protocol encoders, and **Expo EAS Cloud APK Build** support.
 
 ## Features
 
 - **Native Android IR Blaster (`modules/expo-ir-blaster`)**: Wraps Android `ConsumerIrManager` (`hasIrEmitter`, `getCarrierFrequencies`, `transmit`) using `expo-modules-core`.
 - **Safe Simulation Fallback**: Uses `requireOptionalNativeModule('ExpoIrBlaster')` so the app runs cleanly in Expo Go or on phones without an IR emitter, switching automatically to **Simulation Mode** (`Chế độ giả lập` / `Simulation Mode`).
-- **Offline 6-Brand IR Database (`src/services/ir/bundledCodesets.ts`)**: Includes >= 2 codeset variants with all 15 standard remote keys (`POWER`, `SOURCE`, `MUTE`, `UP`, `DOWN`, `LEFT`, `RIGHT`, `OK`, `BACK`, `HOME`, `MENU`, `VOL_UP`, `VOL_DOWN`, `CH_UP`, `CH_DOWN`) for:
+- **Offline 6-Brand IR Database (`src/services/ir/bundledCodesets.ts`)**: Includes >= 2 codeset variants with all 25 standard remote keys (15 control/navigation keys + `DIGIT_0`–`DIGIT_9`) for:
   - **Samsung** (`SAMSUNG32`)
   - **LG** (`NEC`)
   - **Sony** (`SONY_SIRC12`)
   - **TCL** (`NEC`)
   - **Casper** (`NEC`)
   - **Panasonic** (`NEC`)
+- **In-Place Number Pad Toggle (`src/components/RemotePad.tsx`)**: Switch the central remote zone in-place between `D-Pad` navigation and a 3×4 `0–9` numeric keypad (`123`) on a single screen with shared `120ms` debounce and haptic feedback.
 - **Quick Match Wizard (`app/wizard.tsx`)**: Pick a brand, test the Power key, cycle through codeset variants, name the room, and save.
 - **Multi-Room Device Storage (`src/store/deviceStorage.ts`)**: Persist multiple TVs in `AsyncStorage`, switch the active room, rename devices, and delete with automatic active-device fallback.
 - **Bilingual UI (`src/i18n/translations.ts`)**: Instant `VI | EN` header toggle persisted to `AsyncStorage`.
@@ -39,7 +40,7 @@ src/
 
 ```bash
 npm install
-npm test          # Runs all 8 Jest suites (19 tests)
+npm test          # Runs all 8 Jest suites (24 tests)
 npm run typecheck # Runs tsc --noEmit
 npx expo start    # Preview UI in Expo Go (Simulation Mode)
 ```
