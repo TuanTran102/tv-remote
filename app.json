@@ -3,6 +3,9 @@
     "name": "IR TV Remote",
     "slug": "tv-remote",
     "version": "1.0.0",
+    "platforms": [
+      "android"
+    ],
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "scheme": "tvremote",
@@ -27,6 +30,13 @@
       "eas": {
         "projectId": "c03a6f9f-a79c-4147-b284-c0b734516edf"
       }
-    }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/c03a6f9f-a79c-4147-b284-c0b734516edf"
+    },
+    "ios": {}
   }
 }

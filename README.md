@@ -55,3 +55,13 @@ npm run build:apk
 # or: npx eas-cli build -p android --profile preview
 eas build --platform android --profile preview
 ```
+
+## OTA Updates (EAS Update)
+
+`app.json` targets `"platforms": ["android"]` and configures `expo-updates` with `runtimeVersion.policy: "appVersion"`.
+
+```bash
+npx eas update --branch preview --message "Describe your update"
+```
+
+> **Note:** An APK must be built with `expo-updates` included (`npm run build:apk`) before it can receive OTA updates on the same `appVersion`.
