@@ -29,12 +29,12 @@ describe('RemotePad helpers & 3x4 Number Pad', () => {
     expect(Haptics.impactAsync).toHaveBeenCalledWith('light');
   });
 
-  it('defines a 3x4 grid with digits 1-9 and 0 centered on the bottom row', () => {
+  it('defines a 3x4 grid with digits 1-9, 0 centered, and OK to the right of 0 on the bottom row', () => {
     expect(NUMPAD_GRID_ROWS).toEqual([
       ['DIGIT_1', 'DIGIT_2', 'DIGIT_3'],
       ['DIGIT_4', 'DIGIT_5', 'DIGIT_6'],
       ['DIGIT_7', 'DIGIT_8', 'DIGIT_9'],
-      [null, 'DIGIT_0', null],
+      [null, 'DIGIT_0', 'OK'],
     ]);
 
     for (const digitKey of DIGIT_REMOTE_KEYS) {

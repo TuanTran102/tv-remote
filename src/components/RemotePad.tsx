@@ -26,11 +26,13 @@ export interface RemotePadProps {
 
 const KEY_DEBOUNCE_MS = 120;
 
-export const NUMPAD_GRID_ROWS: readonly (readonly (DigitRemoteKey | null)[])[] = [
+export type NumpadGridKey = DigitRemoteKey | 'OK';
+
+export const NUMPAD_GRID_ROWS: readonly (readonly (NumpadGridKey | null)[])[] = [
   ['DIGIT_1', 'DIGIT_2', 'DIGIT_3'],
   ['DIGIT_4', 'DIGIT_5', 'DIGIT_6'],
   ['DIGIT_7', 'DIGIT_8', 'DIGIT_9'],
-  [null, 'DIGIT_0', null],
+  [null, 'DIGIT_0', 'OK'],
 ] as const;
 
 export const DIGIT_KEY_META: Record<DigitRemoteKey, { digit: string; labelKey: TranslationKey }> = {
@@ -255,17 +257,35 @@ export function RemotePad({
         <View style={styles.numpadGrid} testID="remote-numpad-zone">
           {NUMPAD_GRID_ROWS.map((row, rowIndex) => (
             <View key={`row-${rowIndex}`} style={styles.numpadRow}>
-              {row.map((digitKey, colIndex) => {
-                if (!digitKey) {
+              {row.map((cellKey, colIndex) => {
+                if (!cellKey) {
                   return <View key={`spacer-${rowIndex}-${colIndex}`} style={styles.numpadSpacer} />;
                 }
-                const meta = DIGIT_KEY_META[digitKey];
+                if (cellKey === 'OK') {
+                  return (
+                    <Pressable
+                      key="OK"
+                      accessibilityLabel={t('keyOk')}
+                      disabled={disabled}
+                      onPress={() => handleKeyPress('OK')}
+                      style={({ pressed }) => [
+                        styles.numpadBtn,
+                        styles.numpadOkBtn,
+                        pressed && styles.pressed,
+                      ]}
+                      testID="numpad-key-OK"
+                    >
+                      <Text style={styles.numpadOkLabel}>{t('keyOk')}</Text>
+                    </Pressable>
+                  );
+                }
+                const meta = DIGIT_KEY_META[cellKey];
                 return (
                   <Pressable
-                    key={digitKey}
+                    key={cellKey}
                     accessibilityLabel={t(meta.labelKey)}
                     disabled={disabled}
-                    onPress={() => handleKeyPress(digitKey)}
+                    onPress={() => handleKeyPress(cellKey)}
                     style={({ pressed }) => [
                       styles.numpadBtn,
                       pressed && styles.numpadBtnPressed,
@@ -502,6 +522,15 @@ const styles = StyleSheet.create({
     color: '#F8FAFC',
     fontSize: 20,
     fontWeight: '700',
+  },
+  numpadOkBtn: {
+    backgroundColor: '#2563EB',
+    borderColor: '#3B82F6',
+  },
+  numpadOkLabel: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: '800',
   },
   rockerRow: {
     flexDirection: 'row',
